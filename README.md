@@ -1,6 +1,8 @@
 # ⚽ FM26 Scouting Analysis 
 [![Tests](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml)
 
+🔗 **[Voir le dashboard en ligne](https://fm26-analytics.streamlit.app/)**
+
 Analyse de données de scouting sous **Football Manager 26** : extraction, nettoyage, exploration statistique et dashboard interactif pour identifier les joueurs sous-cotés, les jeunes à potentiel, et comparer les performances par poste.
 
 Projet réalisé pour m'entraîner sur un pipeline complet de data science : **collecte → nettoyage → exploration → visualisation → dashboard interactif**, sur un jeu de données réel (bien que fictif dans son contenu).
