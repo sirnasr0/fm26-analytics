@@ -1,5 +1,7 @@
 # ⚽ FM26 Scouting Analysis 
 [![Tests](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 🔗 **[Voir le dashboard en ligne](https://fm26-analytics.streamlit.app/)**
 
