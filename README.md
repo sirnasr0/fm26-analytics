@@ -1,4 +1,5 @@
-# ⚽ FM26 Scouting Analysis
+# ⚽ FM26 Scouting Analysis 
+[![Tests](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/sirnasr0/fm26-analytics/actions/workflows/tests.yml)
 
 Analyse de données de scouting sous **Football Manager 26** : extraction, nettoyage, exploration statistique et dashboard interactif pour identifier les joueurs sous-cotés, les jeunes à potentiel, et comparer les performances par poste.
 
