@@ -18,7 +18,7 @@ Projet réalisé pour m'entraîner sur un pipeline complet de data science : **c
 - Fusionner plusieurs sources de données sur une clé commune
 - Explorer les corrélations entre attributs de jeu et performance globale (`Note`)
 - Repérer les joueurs sous-cotés (bon niveau / faible salaire) et les jeunes à fort potentiel
-- Proposer un dashboard interactif pour explorer l'effectif dynamiquement
+- Proposer un dashboard interactif pour explorer l'effectif dynamiquement, avec des recommandations chiffrées
 
 ## 🗂 Structure du projet
 
@@ -52,6 +52,7 @@ fm26-analytics/
 - `streamlit` — dashboard interactif
 - `Jupyter Notebook` — exploration
 - `pytest` — tests unitaires sur les fonctions de parsing
+- `GitHub Actions` — exécution automatique des tests à chaque push
 
 ## 📊 Aperçu des résultats (notebook)
 
@@ -65,7 +66,9 @@ fm26-analytics/
 
 ## 📱 Dashboard interactif
 
-Un dashboard Streamlit permet d'explorer l'effectif dynamiquement, sans avoir besoin d'ouvrir le notebook.
+Un dashboard Streamlit permet d'explorer l'effectif dynamiquement, sans avoir besoin d'ouvrir le notebook. Il est organisé en 2 pages, accessibles via une navbar :
+
+### 📊 Page "Général"
 
 ![dashboard-vue-ensemble](reports/figures/dashboard_vue_ensemble.png)
 
@@ -80,6 +83,17 @@ Un dashboard Streamlit permet d'explorer l'effectif dynamiquement, sans avoir be
 
 ![fiche-joueur](reports/figures/dashboard_fiche_joueur.png)
 ![stats-interactives](reports/figures/dashboard_graphes-interactifs.png)
+
+### 💡 Page "Conseils"
+
+Une page dédiée à l'aide à la décision : chaque joueur reçoit un **score composite**, calculé à partir de z-scores (Note, Salaire, Âge standardisés), qui permet d'identifier :
+
+- 🟢 **Les joueurs sous-cotés** — bon niveau, salaire faible, plutôt jeunes
+- 🔴 **Les candidats à la vente** — salaire élevé, niveau plus faible, plutôt âgés
+
+Les deux classements sont affichés avec un dégradé de couleur (rouge → jaune → vert) sur la colonne de score, pour une lecture immédiate.
+
+![page-conseils](reports/figures/dashboard_conseils.png)
 
 **Lancer le dashboard en local :**
 ```bash
@@ -110,13 +124,13 @@ pip install -r requirements.txt
    - `Position` → liste dédoublonnée des postes possibles
 4. **Export** → `data/processed/fm26_data_clean.csv` (34 lignes × 40 colonnes)
 5. **Exploration** → statistiques descriptives, classements, comparaisons par poste, corrélations
-6. **Dashboard** → exploration interactive de l'effectif (voir section ci-dessus)
+6. **Dashboard** → exploration interactive de l'effectif + page de recommandations chiffrées (voir section ci-dessus)
 
 Les fonctions de nettoyage les plus complexes (`convertir_montant`, `extraire_postes`, `extraire_matchs`) sont extraites dans `src/nettoyage.py` et couvertes par des tests unitaires (voir ci-dessous), plutôt que codées en dur dans le notebook.
 
 ## 🧪 Tests
 
-Les fonctions de parsing critiques (gestion des fourchettes de prix, formats K/M, extraction des postes multiples) sont testées avec `pytest` :
+Les fonctions de parsing critiques (gestion des fourchettes de prix, formats K/M, extraction des postes multiples) sont testées avec `pytest`, exécutés automatiquement à chaque push via GitHub Actions (voir badge en haut du README) :
 
 ```bash
 pip install -r requirements.txt
@@ -125,12 +139,11 @@ pytest
 
 ## 🗺 Roadmap
 
-- [ ] Score composite pour détecter automatiquement les joueurs sous-cotés / jeunes à potentiel
 - [ ] Récupération des attributs physiques et des données d'entraînement
-- [ ] Tests automatiques à chaque push (GitHub Actions)
 - [ ] Clustering de profils de joueurs (regroupement par style de jeu statistique)
 - [ ] Analyse des performances match par match
 - [ ] Proposition automatique de composition d'équipe (11 titulaires + remplaçants) sous contrainte de postes
+- [ ] Base élargie de joueurs (marché des transferts) pour du recrutement externe
 
 ## 📄 Licence
 
